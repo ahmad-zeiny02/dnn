@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الحب</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://example.com/flower-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            color: #ffcccb; /* Changed color to light pink */
+        }
+
+        h1 {
+            color: #ff69b4;
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .message {
+            background-color: rgba(255, 228, 225, 0.8); /* Changed background color to light pink */
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: red;
+            transition: background-color 0.3s ease;
+        }
+
+        .message:hover {
+            background-color: rgba(255, 192, 203, 0.8); /* Slightly darker pink on hover */
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 1em;
+            position: relative;
+            bottom: 0;
+        }
+
+        .button {
+            background-color: #ff69b4;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff1493;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ديانا خطيبتي العزيزة</h1>
+    </header>
+    <div class="message">
+        <p>أحبك كثيراً وأتمنى لك يوماً سعيداً!</p>
+        <p>أنتِ أجمل ما حدث لي في هذه الحياة.</p>
+        <p>أنتِ النور الذي يضيء حياتي.</p>
+        <p>أنتِ الحب الذي يملأ قلبي بالسعادة.</p>
+        <p>ديانا، يا زهرة في بستاني،</p>
+        <p>يا نجمة تضيء ليالي،</p>
+        <p>يا حباً يسكن في وجداني،</p>
+        <p>أنتِ الأمل في كل أحلامي.</p>
+        <p>أنتِ السعادة التي لا تنتهي.</p>
+        <p>أنتِ الحلم الذي تحقق.</p>
+        <p>أنتِ القلب الذي ينبض بالحب.</p>
+        <p>بحبك</p>
+    </div>
+    <div class="gallery">
+        <img src="https://th.bing.com/th?id=OSK.HEROhrsRZE2ankFkAtuh50-y03CDZ2yr7WHkaoEyLYuCbKY&w=472&h=280&c=13&rs=2&o=6&cb=13&pid=SANGAM" alt="صورة 1">
+        <img src="https://th.bing.com/th/id/OIP.ZPM1kWeIjZ_iiBHjtcLLrwAAAA?pid=ImgDet&w=144&h=212&c=7" alt="صورة 2">
+        <img src="https://th.bing.com/th/id/R.7a714d101384817bf5f64e42abf780b6?rik=MKC5kdR36T67oA&pid=ImgRaw&r=0" alt="صورة 3">
+    </div>
+    <button class="button" onclick="openModal()">اضغط هنا</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>أحبك يا ديانا!</p>
+        </div>
+    </div>
+    <footer>
+        <p>  موقع الحب</p>
+    </footer>
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
